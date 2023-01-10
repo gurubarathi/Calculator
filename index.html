@@ -11,8 +11,8 @@
     
     <div class="container">
         <form name="calc" class="calculator">
-            <input type="text"  class="value" name="text">
-            <span class="num clear" onclick="clear()">c</span>
+            <input type="text"  class="value" name="text" id="tex" value="">
+            <span class="num clear" onclick="document.calc.text.value=''">c</span>
             <span class="num" onclick="opr('/')">/</span>
             <span class="num" onclick="opr('*')">*</span>
             <span class="num" onclick="num('7')">7</span>
@@ -28,7 +28,7 @@
             <span class="num" onclick="num('3')">3</span>
             <span class="num" onclick="num('0')">0</span>
             <span class="num" onclick="num('00')">00</span>
-            <span class="num" onclick="document.calc.text.value = ''">del</span>
+            <span class="num" onclick="del()">del</span>
             <span class="num equals"  onclick="document.calc.text.value = eval(calc.text.value)">=</span>
         </form>
     </div>
@@ -41,12 +41,15 @@
         function opr(num){
             document.calc.text.value+=num; 
         }
-        let  x=document.getElementById("text")
-        function clear(){
-            x.value=0;  
-        }
+       
         function cal(){
         document.calc.text.value=eval(calc.text.value);
+        }
+        function del(){
+            let del=document.calc.text;
+           let remove= del.value.slice(0,-1);
+           del.value=remove;
+
         }
 
 
